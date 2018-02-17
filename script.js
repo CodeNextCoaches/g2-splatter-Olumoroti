@@ -17,11 +17,12 @@ function setup() {
   canvas = createCanvas(canvasWidth, canvasHeight);
   background(0);
   canvas.parent("canvas-area");
-  canvas.mousePressed(drawEllipse);
+  canvas.mousePressed(drawSplatter);
   button = select("#clear-button");
   button.mousePressed(setup);
   slider = select("#slider");
   slider.input(updateSpread);
+  
   updateSpread();
 }
 
@@ -30,32 +31,31 @@ function draw(){
  
 }
  
-function drawEllipse(){
 
-  fill("ffeeff");
+
+
+
+ 
+  function drawSplatter(){
+
+
+  var circles = random(10,15);
+  fill(random(0,255), random(0,255), random(0,255))
   noStroke();
-  ellipse(mouseX, mouseY, spread, spread);
+  for(i=0; i < circles; i++){
+  var radius = random(5, 15)
+  ellipse(random(mouseX-spread, mouseX+spread), random(mouseY-spread, mouseY+spread), radius, radius);
+    }
 
-}
 
-
-function updateSpread(){
+  }
+ 
+ function updateSpread(){
 
   spread = slider.value();
 
 
  }
-
- 
-
-
- 
-  drawSplatter(){
-
-
-    
-  }
- 
 
 
   /*Creates ellipses on the canvas around where the mouse is clicked.
